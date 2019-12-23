@@ -1,0 +1,60 @@
+# depslib dependency file v1.0
+1577121563 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\configuracion.cpp
+	<iostream>
+	<string>
+	<string.h>
+	<stdio.h>
+	<fstream>
+	<cstdlib>
+	<map>
+	"configuracion.h"
+
+1577121370 c:\users\juanjo\desktop\sbr 2\sbr2\include\configuracion.h
+	<string>
+	<map>
+
+1577122634 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\atributo.cpp
+	"Atributo.h"
+	<string>
+	<string.h>
+
+1577122277 c:\users\juanjo\desktop\sbr 2\sbr2\include\atributo.h
+	<string>
+	<list>
+
+1577123358 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\regla.cpp
+	"Regla.h"
+	<iostream>
+
+1577122920 c:\users\juanjo\desktop\sbr 2\sbr2\include\regla.h
+	<string>
+	"Atributo.h"
+
+1577123509 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<string.h>
+	<list>
+	"configuracion.h"
+	"Regla.h"
+	"Atributo.h"
+
+1577126962 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\baseconocimiento.cpp
+	<iostream>
+	<string>
+	<list>
+	<cstring>
+	<sstream>
+	<fstream>
+	"BaseConocimiento.h"
+	"Atributo.h"
+	"Regla.h"
+	"configuracion.h"
+
+1577126885 c:\users\juanjo\desktop\sbr 2\sbr2\include\baseconocimiento.h
+	<string>
+	<list>
+	"Regla.h"
+	"configuracion.h"
+
