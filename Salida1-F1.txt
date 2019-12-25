@@ -1,0 +1,9 @@
+Dominio de la aplicacion: IDENTIFICACION DE FRUTAS
+Atributo objetivo: Fruta
+-------------------------------------
+BH INICIAL
+Color = Rojo
+NSemillas = 1
+Forma = Redonda
+Diametro = 3
+-------------------------------------

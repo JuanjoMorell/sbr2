@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -31,6 +33,26 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Frutas/BC-F.txt" />
+		<Unit filename="Frutas/BC-I.txt" />
+		<Unit filename="Frutas/BH-F1.txt" />
+		<Unit filename="Frutas/BH-F2.txt" />
+		<Unit filename="Frutas/BH-F3.txt" />
+		<Unit filename="Frutas/BH-F4.txt" />
+		<Unit filename="Frutas/Config-F.txt" />
+		<Unit filename="include/Atributo.h" />
+		<Unit filename="include/BaseConocimiento.h" />
+		<Unit filename="include/BaseHechos.h" />
+		<Unit filename="include/MecanismoInferencia.h" />
+		<Unit filename="include/Regla.h" />
+		<Unit filename="include/configuracion.h" />
+		<Unit filename="src/Atributo.cpp" />
+		<Unit filename="src/BaseConocimiento.cpp" />
+		<Unit filename="src/BaseHechos.cpp" />
+		<Unit filename="src/MecanismoInferencia.cpp" />
+		<Unit filename="src/Regla.cpp" />
+		<Unit filename="src/configuracion.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
