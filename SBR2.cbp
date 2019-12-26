@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="Frutas/BC-F.txt Frutas/Config-F.txt Frutas/BH-F1.txt" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />

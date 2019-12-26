@@ -1,0 +1,3 @@
+Dominio de la aplicacion: IDENTIFICACION DE FRUTAS
+Atributo objetivo: Fruta
+-------------------------------------

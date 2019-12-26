@@ -13,7 +13,8 @@ class MecanismoInferencia
         ~MecanismoInferencia();
 
     private:
-        bool contenida(string meta, BaseHechos& hechos);
+        bool contenida(string meta, list<Atributo> &hechos);
+        bool compararAtributos(Atributo &at1, Atributo &at2);
 };
 
 #endif // MECANISMOINFERENCIA_H

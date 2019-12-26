@@ -22,11 +22,11 @@
 	<string>
 	<list>
 
-1577123358 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\regla.cpp
+1577384358 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\regla.cpp
 	"Regla.h"
 	<iostream>
 
-1577122920 c:\users\juanjo\desktop\sbr 2\sbr2\include\regla.h
+1577384356 c:\users\juanjo\desktop\sbr 2\sbr2\include\regla.h
 	<string>
 	"Atributo.h"
 
@@ -43,7 +43,7 @@
 	"BaseHechos.h"
 	"MecanismoInferencia.h"
 
-1577184741 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\baseconocimiento.cpp
+1577384003 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\baseconocimiento.cpp
 	<iostream>
 	<string>
 	<list>
@@ -72,7 +72,7 @@
 	<list>
 	"Atributo.h"
 
-1577295286 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\mecanismoinferencia.cpp
+1577384595 source:c:\users\juanjo\desktop\sbr 2\sbr2\src\mecanismoinferencia.cpp
 	"MecanismoInferencia.h"
 	<iostream>
 	<list>
@@ -82,12 +82,13 @@
 	<string.h>
 	<stdlib.h>
 	<fstream>
+	<array>
 	"BaseConocimiento.h"
 	"BaseHechos.h"
 	"Atributo.h"
 	"Regla.h"
 
-1577295753 c:\users\juanjo\desktop\sbr 2\sbr2\include\mecanismoinferencia.h
+1577375879 c:\users\juanjo\desktop\sbr 2\sbr2\include\mecanismoinferencia.h
 	"BaseConocimiento.h"
 	"BaseHechos.h"
 

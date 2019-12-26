@@ -13,11 +13,13 @@ class Regla
         void setNSubReglas(int nuevaNSubRegla);
         void setPrioridad(int nuevaPrio);
         void setNumRegla(int n);
+        void setConclusion(Atributo &nConclusion);
 
         Atributo *getSubRegla();
         int getNSubReglas();
         int getPrioridad();
         int getNumRegla();
+        Atributo getConclusion();
 
         Regla();
         ~Regla();
@@ -27,6 +29,7 @@ class Regla
         int numRegla;
         int nSubReglas;
         int prioridad;
+        Atributo conclusion;
         Atributo *subRegla;
 };
 

@@ -8,6 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <fstream>
+#include <array>
 
 #include "BaseConocimiento.h"
 #include "BaseHechos.h"
@@ -19,15 +20,57 @@ using namespace std;
 extern ofstream fichero1;
 extern ofstream fichero2;
 
-bool MecanismoInferencia::contenida(string meta, BaseHechos& hechos)
+bool MecanismoInferencia::contenida(string meta, list<Atributo> &hechos)
 {
-    list<Atributo> hechosActuales = hechos.getHechos();
-    for(Atributo atributo : hechosActuales)
+    for(Atributo atributo : hechos)
     {
         if(atributo.getAtributo().compare(meta) == 0)
         {
             return true;
         }
+    }
+
+    return false;
+}
+
+bool MecanismoInferencia::compararAtributos(Atributo &at1, Atributo &at2)
+{
+    if(at1.getAtributo().compare(at2.getAtributo()) == 0)
+    {
+        if(at1.getTipo().compare("NU") == 0)
+        {
+            //Obtener valor de los atributos
+            int valor1 = stoi(at1.getValor());
+            int valor2 = stoi(at2.getValor());
+
+            string operacion = at1.getOp();
+            if(operacion.compare(">") == 0)
+            {
+                if(valor2 > valor1) return true;
+            }
+            else if(operacion.compare("<") == 0)
+            {
+                if(valor2 < valor1) return true;
+            }
+            else if(operacion.compare(">=") == 0)
+            {
+                if(valor2 >= valor1) return true;
+            }
+            else if(operacion.compare("<=") == 0)
+            {
+                if(valor2 <= valor1) return true;
+            }
+            else if(operacion.compare("=") == 0)
+            {
+                if(valor2 == valor1) return true;
+            }
+        }
+        else
+        {
+            if(at1.getValor().compare(at2.getValor()) == 0)
+                return true;
+        }
+
     }
 
     return false;
@@ -57,32 +100,85 @@ bool MecanismoInferencia::EncaminamientoDelante(BaseConocimiento& conocimiento, 
 
     string meta = conocimiento.getObjetivo();
 
-    while(!contenida(meta, hechos) || !conflictos.empty())
+    while(!contenida(meta, hechosIniciales) || !conflictos.empty())
     {
         //Calcular conjunto conflicto
-        for(Regla regla : reglas)
+        fichero1 << "Analizando posibles reglas a aplicar" << endl;
+        for(list<Regla>::iterator it = reglas.begin(); it != reglas.end(); it++)
         {
-            Atributo *atributo = regla.getSubRegla();
-
-            for(int i = 0; regla.getNSubReglas(); i++)
+            Atributo *atributo = it->getSubRegla();
+            int nReglas = it->getNSubReglas();
+            int condiciones = 0;
+            bool conclusion = false;
+            for(int i = 0; i < nReglas; i++)
             {
-                for(Atributo hechosActuales : hechos)
+                for(Atributo hechoActual : hechosIniciales)
                 {
-                    //Si son iguales los atributos se add a conflictos y se elimina de las reglas
-
+                    if(compararAtributos(atributo[i], hechoActual))
+                        condiciones++;
+                    if(it->getConclusion().getAtributo().compare(hechoActual.getAtributo()) == 0 &&
+                       it->getConclusion().getValor().compare(hechoActual.getValor()) == 0)
+                        conclusion = true;
                 }
+            }
+            if(condiciones == nReglas && !conclusion)
+            {
+                fichero1 << "Regla: " << it->getNumRegla() << ", " << it->getPrioridad() << ". ";
+                conflictos.push_back(*it);
+                it = reglas.erase(it);
+                it--;
             }
         }
 
         if(!conflictos.empty())
         {
             //Resolver y actualizar
+            fichero1 << "Reglas que pueden ser incluidas: " << endl;
+            int max_prioridad = -1;
+            list<Regla>::iterator max_it;
+            for(list<Regla>::iterator it = conflictos.begin(); it != conflictos.end(); it++)
+            {
+                if (it->getPrioridad() > max_prioridad)
+                {
+                    max_prioridad = it->getPrioridad();
+                    max_it = it;
+                }
+                else if(it->getPrioridad() == max_prioridad && it->getNumRegla() < max_it->getNumRegla())
+                {
+                    max_it = it;
+                }
+            }
+
+            //comprobar si el conflicto es adecuado
+            //eliminar de conflicto
+            Regla max_regla = *max_it;
+            fichero1 << "Regla con mas prioridad: " << max_regla.getNumRegla() << ", prio: " << max_regla.getPrioridad() << endl;
+            conflictos.erase(max_it);
+
+            hechosIniciales.push_back(max_regla.getConclusion());
+
+            fichero1 << "BASE ACTUALIZADA" << endl;
+            for(Atributo at_actual : hechosIniciales)
+            {
+                fichero1<< at_actual.getAtributo() << " " << at_actual.getOp() << " " << at_actual.getValor() << endl;
+            }
+            fichero1 << "-------------------------------------" << endl;
+
+
         }
     }
     //Si hay meta == exito
-    if(contenida(meta, hechos))
+    if(contenida(meta, hechosIniciales))
     {
-        //Anadir mensaje de exito
+        fichero1 << "TERMINADO" << endl;
+        //Anadir mensaje de exito en fichero 2
+        Atributo at_final = hechosIniciales.back();
+        list<int> reglas_aplicadas = at_final.getReglas();
+
+        fichero2 << "Conclusion: " << endl;
+        fichero2 << at_final.getAtributo() << ", " << at_final.getValor() << endl;
+
+
         return true;
     }
 

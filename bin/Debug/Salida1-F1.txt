@@ -1,0 +1,20 @@
+Dominio de la aplicacion: IDENTIFICACION DE FRUTAS
+Atributo objetivo: Fruta
+-------------------------------------
+BH INICIAL
+Color = Rojo
+NSemillas = 1
+Forma = Redonda
+Diametro = 3
+-------------------------------------
+Analizando posibles reglas a aplicar
+Pruebas: (NSemillas, NU)
+Pruebas: (TipoSemilla, Nom)
+Pruebas: (, )
+Pruebas: (, )
+Pruebas: (, )
+Pruebas: (, )
+Pruebas: (, )
+Pruebas: (, )
+Pruebas: (, )
+Pruebas: (, )

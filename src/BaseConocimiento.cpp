@@ -66,6 +66,10 @@ void BaseConocimiento::LeerReglas(const string &line)
         {
             nSubReglas++;
         }
+        else if(strcmp(linea, "Entonces") == 0)
+        {
+            break;
+        }
 
         Atributo atributo_aux;
         s >> st1;
@@ -83,7 +87,18 @@ void BaseConocimiento::LeerReglas(const string &line)
     regla_aux.setNumRegla(reglasLeidas + 1);
     regla_aux.setPrioridad(config.getPrioridadRegla(reglasLeidas));
     regla_aux.setSubRegla(*tabla);
-    regla_aux.setNSubReglas(nReglas);
+    regla_aux.setNSubReglas(nSubReglas);
+
+    Atributo conclusion;
+    s >> st1;
+    conclusion.setAtributo(st1);
+    conclusion.setTipo(config.getTipoArgumento(st1));
+    s >> st1;
+    conclusion.setOp(st1);
+    s >> st1;
+    conclusion.setValor(st1);
+    regla_aux.setConclusion(conclusion);
+
     reglas.push_back(regla_aux);
     reglasLeidas++;
 }

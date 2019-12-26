@@ -23,6 +23,11 @@ void Regla::setNumRegla(int n)
     numRegla = n;
 }
 
+void Regla::setConclusion(Atributo &nConclusion)
+{
+    conclusion = nConclusion;
+}
+
 Atributo *Regla::getSubRegla()
 {
     return subRegla;
@@ -41,6 +46,11 @@ int Regla::getPrioridad()
 int Regla::getNumRegla()
 {
     return numRegla;
+}
+
+Atributo Regla::getConclusion()
+{
+    return conclusion;
 }
 
 Regla::Regla()
